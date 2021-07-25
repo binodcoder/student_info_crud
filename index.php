@@ -4,19 +4,20 @@
 	<title>demo paper</title>
 </head>
 <body>
+<fieldset>
+			<legend><h1 style='color:black'><b>  Insert Student Info</b></h1></legend>
     
-    Insert Student Info<br><br>
-	
-			<form action="" method="post">
-				<input type='number' min="1" max="100" name='id' required autofocus placeholder='Roll Number'><br>
+ 			<form action="" method="post">
+				<input type='number' min="1" max="100" name='id' required autofocus placeholder='Student ID'><br>
 				<input type='text' name='name' minlength="5" pattern="^\D*$" required placeholder='Full Name'><br>
-				<input type='text' name='address' required minlength="3" placeholder="City"><br>
-                <input type='text' name='faculty' required minlength="3" placeholder="City"><br>
+				<input type='text' name='address' required minlength="3" placeholder="Address"><br>
+                <input type='text' name='faculty' required minlength="3" placeholder="Faculty"><br>
                 <input type='number' min="1" name='semester' required placeholder="Semester"><br>
-                <input type='text' name='join_date' required minlength="3" placeholder="City"><br>
+                <input type='text' name='join_date' required minlength="3" placeholder="Join Date"><br>
                 <input type='number' min="1" name='fee' required placeholder="Fee"><br>
-                <input type='submit' name='insertbtn' value='Add Students' class='btn btn-info'><br>
+                <input type='submit' name='insertbtn' value='Add Students'><br>
 			</form>
+</fieldset>
 		</div>
 		<?php 
 		require 'db.php';
@@ -43,15 +44,14 @@
 			}
 		}
 		?>
-<br><br>
-        View the student Info
-<br><br>
+ <fieldset>
+			<legend><h1 style='color:black'><b>  View Student Info</b></h1></legend>
         <form action='' method='post'>
 			<input type='text' name='id' placeholder='ID'>
 			<input type='submit' name='search' value='search'>
 		</form>
 		
-			<table border="2">
+			<table border="1">
 				<tr>
 					<th>SN</th>
 					<th>ID</th>
@@ -87,9 +87,8 @@
 						</td>
 					</tr>
 				<?php }}?>
+               
 			</table>
-				
-            
-	
+                </fieldset>
 	</body>
 	</html>

@@ -1,54 +1,50 @@
 <!doctype html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+    <title>update</title>
 </head>
-<body bgcolor='#FFC300'>
-	<div class='container mt-3'>
+<body>
+	
 	<?php 
-require 'header.php';
- require '../dbcon.php';
+
+ require 'db.php';
   $id = $_GET['id'];
 
-  $select_query = "select * from studentinfo where id = $id";
+  $select_query = "select * from std_info where id = $id";
   $result =  $con->query ($select_query);
   $row = $result->fetch_assoc ();
 ?>
-<?php require 'navigation.php';?>
-
-
-	<div style="font-size:20px;" align="center">
 		<form action='' method='post'>
 		<fieldset>
 			<legend><h1 style='color:black'><b>Update the following information</b></h1></legend>
-			<table bgcolor='white' class="table table-striped table-bordered table-condensed">
+			<table>
 				<tr>
-					<td>Roll Number</td>
-					<td><input type='text' name='rollno' value="<?php echo $row['rollno']; ?>" class='form-control'></td>
+					<td>Id</td>
+					<td><input type='text' name='id' value="<?php echo $row['id']; ?>"></td>
 				</tr>
 				<tr>
 					<td>Full Name</td>
-					<td><input type='text' name='name' value="<?php echo $row['name']; ?>" class='form-control'></td>
+					<td><input type='text' name='name' value="<?php echo $row['name']; ?>" ></td>
 				</tr>
 				<tr>
-					<td>City</td>
-					<td><input type='text' name='city' value="<?php echo $row['city']; ?>" class='form-control'></td>
+					<td>Address</td>
+					<td><input type='text' name='address' value="<?php echo $row['address']; ?>"></td>
 				</tr>
 				<tr>
-					<td>Parents Contact</td>
-					<td><input type='text' name='contact' value="<?php echo $row['parentscontact']; ?>" class='form-control'></td>
+					<td>Faculty</td>
+					<td><input type='text' name='faculty' value="<?php echo $row['faculty']; ?>"></td>
 				</tr>
 				<tr>
-					<td>Standard</td>
-					<td><input type='number' name='standard' value="<?php echo $row['standard']; ?>" class='form-control'></td>
+					<td>Semester</td>
+					<td><input type='number' name='semester' value="<?php echo $row['semester']; ?>"></td>
 				</tr>
 				<tr>
-					<td>Password</td>
-					<td><input type='password' name='password' value='<?php echo $row['password'];?>' class='form-control'></td>
+					<td>Join Date</td>
+					<td><input type='text' name='date' value='<?php echo $row['date'];?>'></td>
 				</tr>
 				<tr>
-					<td>Image</td>
-					<td><input type='text' name='image' value="<?php echo $row['image']; ?>" class='form-control'></td>
+					<td>Fee</td>
+					<td><input type='number' name='fee' value="<?php echo $row['fee']; ?>"></td>
 				</tr>
 				<tr>
 					<td><input type='submit' name='updatebtn' value='Update Student' class='btn btn-info'></td>
@@ -61,22 +57,21 @@ require 'header.php';
 <?php 
 if(isset($_POST['updatebtn']))
 {
-
-	$rollno=$_POST['rollno'];
+	$id=$_POST['id'];
 	$fullName=$_POST['name'];
-	$city=$_POST['city'];
-	$parentContact=$_POST['contact'];
-	$standard=$_POST['standard'];
-	$image=$_POST['image'];
+	$address=$_POST['address'];
+	$faculty=$_POST['faculty'];
+	$semester=$_POST['semester'];
+	$date=$_POST['date'];
+    $fee=$_POST['fee'];
+	require 'db.php';
 
-	require '../dbcon.php';
-
-	$update_query="update studentinfo set rollno='$rollno', name='$fullName', city='$city', parentscontact='$parentContact', standard='$standard', image='$image' where id=$id ";
+	$update_query="update std_info set id='$id', name='$fullName', address='$address', faculty='$faculty', semester='$semester', date='$date', fee='$fee' where id=$id ";
 
 	if($con->query($update_query))
 	{
 		echo "<script>alert('data has been updated');</script>";
-		 echo "<script>window.location = 'admindash.php'</script>";
+		 echo "<script>window.location = 'index.php'</script>";
 	}
 	else
 	{
@@ -86,9 +81,5 @@ if(isset($_POST['updatebtn']))
 }
 
 ?>
-<?php 
-include('footer.php');
-?>
-</div>
 </body>
 </html>
